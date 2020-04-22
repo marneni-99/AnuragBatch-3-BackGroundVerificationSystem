@@ -14,15 +14,15 @@ import javax.validation.constraints.Size;
 public class Logindata {
 	@Id
 	private int userId;
-	@NotBlank(message="username cannot be empty")
+	//@NotBlank(message="username cannot be empty")
 	private String userName;
-	@NotBlank(message="usertype cannot be empty")
+	//@NotBlank(message="usertype cannot be empty")
 	private String userType;
-	@Size(min=8, max=20, message="password must be minimum 8 characters")
+	//@Size(min=8, max=20, message="password must be minimum 8 characters")
 	private String userPassword;
-	@Min(value=10)
+	//@Min(value=10)
 	private long userPhoneno;
-	@Email(message="enter proper email id")
+	//@Email(message="enter proper email id")
 	private String userEmail;
 	
 	

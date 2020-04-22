@@ -24,7 +24,7 @@ import com.capgemini.backgroundverification.entity.Logindata;
 
 @RestController
 @RequestMapping("/user")
-//@CrossOrigin("http://localhost:4200")
+@CrossOrigin("http://localhost:4200")
 public class LoginController {
 	@Autowired
 	LoginService serviceobj;
@@ -72,7 +72,7 @@ public class LoginController {
 	}
 	
 
-	@PutMapping("/Loginuser")
+	/*@PutMapping("/Loginuser")
 	public ResponseEntity<String> loginUser(@RequestBody Logindata u)
 	{
 		
@@ -83,8 +83,17 @@ public class LoginController {
 		}else {
 			return new ResponseEntity<String>("Login successful", new HttpHeaders(), HttpStatus.OK);
 		}
-	}
+	}*/
 
+	@PutMapping("/Loginuser")
+	public boolean loginUser(@RequestBody Logindata u)
+	{
+		
+		 boolean flag=serviceobj.loginUser(u);
+		 return flag;
+	}
+	
+	
 	@ExceptionHandler(IdNotFoundException.class)
 	public ResponseEntity<String> userNotFound(IdNotFoundException e) {
 		return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
