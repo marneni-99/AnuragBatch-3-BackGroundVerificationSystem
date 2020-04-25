@@ -20,7 +20,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.capgemini.backgroundverification.dao.LoginDaoImpl;
 import com.capgemini.backgroundverification.entity.Logindata;
+import com.capgemini.backgroundverification.entity.Verification;
 
 @RestController
 @RequestMapping("/user")
@@ -40,7 +43,17 @@ public class LoginController {
 		}
 	}
 
-	
+
+	@PostMapping("/addVer")
+	public ResponseEntity<String> addVer(@RequestBody Verification u) {
+		Verification e = serviceobj.addVer(u);
+		if (e == null) {
+			throw new IdNotFoundException("Enter Valid Id");
+		} else {
+			return new ResponseEntity<String>("User created successfully", new HttpHeaders(), HttpStatus.OK);
+		}
+	}
+
 	// Get all users
 	@GetMapping("/GetAllUsers")
 	private ResponseEntity<List<Logindata>> getAllUsers() {
@@ -49,6 +62,13 @@ public class LoginController {
 
 	}
 
+	LoginDaoImpl serviceobj1;
+	@GetMapping("/GetAllVers")
+	private ResponseEntity<List<Verification>> getAllVers() {
+		List<Verification> userlist1 = serviceobj1.getAllVers();
+		return new ResponseEntity<List<Verification>>(userlist1, new HttpHeaders(), HttpStatus.OK);
+
+	}
 	//Update User
 	@PutMapping("/UpdateUser")
 	public ResponseEntity<String> updateUser(@RequestBody Logindata u) {
@@ -86,10 +106,10 @@ public class LoginController {
 	}*/
 
 	@PutMapping("/Loginuser")
-	public boolean loginUser(@RequestBody Logindata u)
+	public String loginUser(@RequestBody Logindata u)
 	{
 		
-		 boolean flag=serviceobj.loginUser(u);
+		 String flag=serviceobj.loginUser(u);
 		 return flag;
 	}
 	

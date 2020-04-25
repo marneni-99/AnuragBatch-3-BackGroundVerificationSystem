@@ -3,6 +3,7 @@ package com.capgemini.backgroundverification.service;
 import java.util.List;
 
 import com.capgemini.backgroundverification.entity.Logindata;
+import com.capgemini.backgroundverification.entity.Verification;
 
 public interface LoginService {
 
@@ -15,6 +16,8 @@ public interface LoginService {
 
 	Logindata updateUser(Logindata u);
 	
-	Boolean loginUser(Logindata u);
+	String loginUser(Logindata u);
+	
+	Verification addVer(Verification u);
 
 }
