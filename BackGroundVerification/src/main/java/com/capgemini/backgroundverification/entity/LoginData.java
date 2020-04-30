@@ -10,8 +10,8 @@ import javax.validation.constraints.Size;
 
 
 @Entity
-@Table(name = "Logindata")
-public class Logindata {
+@Table(name = "LoginData")
+public class LoginData {
 	@Id
 	private int userId;
 	//@NotBlank(message="username cannot be empty")
@@ -26,7 +26,7 @@ public class Logindata {
 	private String userEmail;
 	
 	
-	public Logindata() {
+	public LoginData() {
 		
 	}
 	public int getUserId() {

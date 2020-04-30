@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capgemini.backgroundverification.dao.LoginDaoImpl;
-import com.capgemini.backgroundverification.entity.Logindata;
+import com.capgemini.backgroundverification.entity.LoginData;
 import com.capgemini.backgroundverification.entity.Verification;
 
 @RestController
@@ -34,8 +34,8 @@ public class LoginController {
 
 	// Add user
 	@PostMapping("/addUser")
-	public ResponseEntity<String> addUser(@RequestBody Logindata u) {
-		Logindata e = serviceobj.addUser(u);
+	public ResponseEntity<String> addUser(@RequestBody LoginData u) {
+		LoginData e = serviceobj.addUser(u);
 		if (e == null) {
 			throw new IdNotFoundException("Enter Valid Id");
 		} else {
@@ -56,9 +56,9 @@ public class LoginController {
 
 	// Get all users
 	@GetMapping("/GetAllUsers")
-	private ResponseEntity<List<Logindata>> getAllUsers() {
-		List<Logindata> userlist = serviceobj.getAllUsers();
-		return new ResponseEntity<List<Logindata>>(userlist, new HttpHeaders(), HttpStatus.OK);
+	private ResponseEntity<List<LoginData>> getAllUsers() {
+		List<LoginData> userlist = serviceobj.getAllUsers();
+		return new ResponseEntity<List<LoginData>>(userlist, new HttpHeaders(), HttpStatus.OK);
 
 	}
 
@@ -71,8 +71,8 @@ public class LoginController {
 	}
 	//Update User
 	@PutMapping("/UpdateUser")
-	public ResponseEntity<String> updateUser(@RequestBody Logindata u) {
-		Logindata e = serviceobj.updateUser(u);
+	public ResponseEntity<String> updateUser(@RequestBody LoginData u) {
+		LoginData e = serviceobj.updateUser(u);
 		if (e == null) {
 			throw new IdNotFoundException("Update Operation Unsuccessful,Provided Id does not exist");
 		} else {
@@ -83,7 +83,7 @@ public class LoginController {
 	// Delete User
 	@DeleteMapping("/DeleteUser/{userId}")
 	private ResponseEntity<String> deleteUser(@PathVariable("userId") int userId) {
-		Logindata e = serviceobj.deleteUser(userId);
+		LoginData e = serviceobj.deleteUser(userId);
 		if (e == null) {
 			throw new IdNotFoundException("Delete Operation Unsuccessful,Provided Id does not exist");
 		} else {
@@ -106,7 +106,7 @@ public class LoginController {
 	}*/
 
 	@PutMapping("/Loginuser")
-	public String loginUser(@RequestBody Logindata u)
+	public String loginUser(@RequestBody LoginData u)
 	{
 		
 		 String flag=serviceobj.loginUser(u);

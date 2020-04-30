@@ -2,6 +2,62 @@ package com.capgemini.backgroundverification.entity;
 
 
 
+
+
+/*import javax.persistence.*;
+
+@Entity
+@Table(name="model_document")
+public class FileModel {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
+    private String docName;
+    
+    @Column(name = "doctype")
+	private String doctype;
+	
+
+    @Column
+    @Lob
+    private byte[] file;
+
+    public FileModel(String docName, String docType, byte[] file) {
+		// TODO Auto-generated constructor stub
+    	this.docName=docName;
+    	this.doctype=docType;
+    	this.file=file;
+	}
+
+	public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDocName() {
+        return docName;
+    }
+
+    public void setDocName(String docName) {
+        this.docName = docName;
+    }
+
+    public void setFile(byte[] file) {
+        this.file = file;
+    }
+
+    public byte[] getFile() {
+        return file;
+    }
+
+}*/
+
 	import javax.persistence.CascadeType;
 	import javax.persistence.Column;
 	import javax.persistence.Entity;
@@ -15,7 +71,7 @@ package com.capgemini.backgroundverification.entity;
 
 
 	@Entity
-	@Table(name="Filemodel")
+	@Table(name="FileModel")
 	public class FileModel {
 		@Id
 		@GeneratedValue
@@ -40,8 +96,8 @@ package com.capgemini.backgroundverification.entity;
 		@JoinColumn(name="verId")
 		private verification verification;*/
 		
-		@OneToOne(mappedBy="filemodel")
-		private Verification verification;
+		/*@OneToOne(mappedBy="filemodel")
+		private Verification verification;*/
 		
 		public FileModel()
 		{
@@ -52,7 +108,7 @@ package com.capgemini.backgroundverification.entity;
 			return verification;
 		}
 
-		public void setVerification(verification verification) {
+		public void setVerification(verificaStion verification) {
 			this.verification = verification;
 		}*/
 
@@ -93,5 +149,5 @@ package com.capgemini.backgroundverification.entity;
 		public void setPic(byte[] pic){
 			this.pic = pic;
 		}
-	}
+		}
 

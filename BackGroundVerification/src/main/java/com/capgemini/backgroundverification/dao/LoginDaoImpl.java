@@ -8,7 +8,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
-import com.capgemini.backgroundverification.entity.Logindata;
+import com.capgemini.backgroundverification.entity.LoginData;
 import com.capgemini.backgroundverification.entity.Verification;
 @Repository
 public class LoginDaoImpl implements LoginDao {
@@ -17,23 +17,23 @@ public class LoginDaoImpl implements LoginDao {
 	 EntityManager em;
 	
 	@Override
-	public Logindata addUser(Logindata u) {
+	public LoginData addUser(LoginData u) {
 		// TODO Auto-generated method stub
-		Logindata e=em.merge(u);
+		LoginData e=em.merge(u);
 		return e;
 	}
 	
 	
 	@Override
-	public List<Logindata> getAllUsers() {
-		Query q=em.createQuery("select m from Logindata m");
-		List<Logindata> userlist=q.getResultList();
+	public List<LoginData> getAllUsers() {
+		Query q=em.createQuery("select m from LoginData m");
+		List<LoginData> userlist=q.getResultList();
 		return userlist;
 	}
 	
 	@Override
-	public Logindata updateUser(Logindata u) {
-		Logindata ud=em.find(Logindata.class,u.getUserId());
+	public LoginData updateUser(LoginData u) {
+		LoginData ud=em.find(LoginData.class,u.getUserId());
 		if(ud!=null)
 		{
 
@@ -47,8 +47,8 @@ public class LoginDaoImpl implements LoginDao {
 			
 	}
 	@Override	
-	public Logindata deleteUser(int userId) {
-		Logindata ud=em.find(Logindata.class,userId);
+	public LoginData deleteUser(int userId) {
+		LoginData ud=em.find(LoginData.class,userId);
 		if(ud!=null)
 			{em.remove(ud);
 			}
@@ -56,9 +56,9 @@ public class LoginDaoImpl implements LoginDao {
 	}
 	
 	@Override
-	public String loginUser(Logindata u) {
+	public String loginUser(LoginData u) {
 		String flag=null;
-	Query q=em.createQuery("select m.userType from Logindata m where m.userName=?1 and m.userPassword=?2");
+	Query q=em.createQuery("select m.userType from LoginData m where m.userName=?1 and m.userPassword=?2");
 	String a=u.getUserName();
 	String b=u.getUserPassword();
 	q.setParameter(1, a);

@@ -1,20 +1,20 @@
 package com.capgemini.backgroundverification.dao;
 import java.util.List;
 
-import com.capgemini.backgroundverification.entity.Logindata;
+import com.capgemini.backgroundverification.entity.LoginData;
 import com.capgemini.backgroundverification.entity.Verification;
 
 public interface LoginDao {
 
-	Logindata addUser(Logindata u);
+	LoginData addUser(LoginData u);
 
-	List<Logindata> getAllUsers();
+	List<LoginData> getAllUsers();
 
-	Logindata deleteUser(int userId);
+	LoginData deleteUser(int userId);
 
-	Logindata updateUser(Logindata u);
+	LoginData updateUser(LoginData u);
 
-	String loginUser(Logindata u);
+	String loginUser(LoginData u);
 	
-	Verification addVer(Verification u);
+	
 }

@@ -18,18 +18,18 @@ public class Verification {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int verId;
-	private DateType StartDate;
-	private DateType EndDate;
+	//private DateType StartDate;
+	//private DateType EndDate;
 	private String status;
 	
 	
-	@OneToOne(cascade=CascadeType.ALL)   
+	/*@OneToOne(cascade=CascadeType.ALL)   
 	@JoinColumn(name="userId")
 	private Logindata logindata;
 	
 	@OneToOne(cascade=CascadeType.ALL)   
 	@JoinColumn(name="id")
-	private FileModel filemodel;
+	private FileModel filemodel;*/
 	
 	
 	
@@ -41,7 +41,7 @@ public class Verification {
 	}
 	
 	
-	public DateType getStartDate() {
+	/*public DateType getStartDate() {
 		return StartDate;
 	}
 	public void setStartDate(DateType startDate) {
@@ -52,22 +52,8 @@ public class Verification {
 	}
 	public void setEndDate(DateType endDate) {
 		EndDate = endDate;
-	}
-	public Logindata getLogindata() {
-		return logindata;
-	}
-	public void setLogindata(Logindata logindata) {
-		this.logindata = logindata;
-	}
-	public FileModel getFilemodel() {
-		return filemodel;
-	}
-	public void setFilemodel(FileModel filemodel) {
-		this.filemodel = filemodel;
-	}
-	public String getStatus() {
-		return status;
-	}
+	}*/
+	
 	
 	public void setStatus(String status) {
 		this.status = status;
