@@ -16,23 +16,30 @@ import org.hibernate.type.DateType;
 @Table(name= "Verification")
 public class Verification {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	private int verId;
 	//private DateType StartDate;
 	//private DateType EndDate;
 	private String status;
 	
 	
-	/*@OneToOne(cascade=CascadeType.ALL)   
+	@OneToOne(cascade=CascadeType.ALL)   
 	@JoinColumn(name="userId")
-	private Logindata logindata;
+	private LoginData logindata;
 	
 	@OneToOne(cascade=CascadeType.ALL)   
 	@JoinColumn(name="id")
-	private FileModel filemodel;*/
+	private FileModel filemodel;
 	
+	public Verification()
+	{
+		
+	}
 	
-	
+	public Verification(int i, String string) {
+		this.verId=i;
+		this.status=string;
+	}
 	public int getVerId() {
 		return verId;
 	}
@@ -57,6 +64,15 @@ public class Verification {
 	
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public LoginData getLogindata() {
+		return logindata;
+	}
+	public void setLogindata(LoginData logindata) {
+		this.logindata = logindata;
+	}
+	public String getStatus() {
+		return status;
 	}
 	
 	

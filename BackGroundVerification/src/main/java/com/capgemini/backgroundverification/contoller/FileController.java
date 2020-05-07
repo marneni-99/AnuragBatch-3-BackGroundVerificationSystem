@@ -19,32 +19,36 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.capgemini.backgroundverification.dao.FileRepository;
 import com.capgemini.backgroundverification.entity.FileModel;
+import com.capgemini.backgroundverification.service.FileService;
 import com.fasterxml.jackson.annotation.JsonView;
 @RestController
 @CrossOrigin("http://localhost:4200")
 public class FileController {
 	
 	@Autowired
-	FileRepository fileRepository;
-
+	//FileRepository fileRepository;
+	FileService fileService;
 
 	@PostMapping("/upload")
-	public  org.springframework.http.ResponseEntity.BodyBuilder uplaodImage(@RequestParam("File") MultipartFile file) throws IOException {
+	public  org.springframework.http.ResponseEntity.BodyBuilder uplaodFiles(@RequestParam("File") MultipartFile file) throws IOException {
 		System.out.println("Original Image Byte Size - " + file.getBytes().length);
 		FileModel files = new FileModel(file.getOriginalFilename(), file.getContentType(),
 				compressBytes(file.getBytes()));
-		fileRepository.save(files);
+		fileService.uploadFiles(files);
 		return ResponseEntity.status(HttpStatus.OK);
 	}
+	
+	
 	@GetMapping(path = { "/get/{fileId}" })
-	public FileModel getImage(@PathVariable("fileId") Long fileId) throws IOException {
-		final Optional<FileModel> retrievedImage = fileRepository.findById(fileId);
+	public FileModel GetById(@PathVariable("fileId") Long fileId) throws IOException {
+		final Optional<FileModel> retrievedImage = fileService.GetById(fileId);
 		FileModel img = new FileModel(retrievedImage.get().getName(), retrievedImage.get().getMimetype(),
 				decompressBytes(retrievedImage.get().getPic()));
 		return img;
