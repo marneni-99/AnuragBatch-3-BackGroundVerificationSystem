@@ -1,17 +1,11 @@
 package com.capgemini.backgroundverification.entity;
 
-
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 
 
 @Entity
@@ -36,14 +30,6 @@ public class FileModel {
 	{
 		
 	}
-
-	/*public verification getVerification() {
-		return verification;
-	}
-
-	public void setVerification(verificaStion verification) {
-		this.verification = verification;
-	}*/
 
 	public FileModel(String name, String mimetype, byte[] pic){
 		this.name = name;

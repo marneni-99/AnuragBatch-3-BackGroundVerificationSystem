@@ -2,7 +2,6 @@ package com.capgemini.backgroundverification.contoller;
 
 
 import java.io.IOException;
-import java.util.List;
 
 import java.util.Optional;
 import java.util.zip.DataFormatException;
@@ -11,23 +10,18 @@ import java.util.zip.Inflater;
 
 import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity.BodyBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.capgemini.backgroundverification.dao.FileRepository;
 import com.capgemini.backgroundverification.entity.FileModel;
 import com.capgemini.backgroundverification.service.FileService;
-import com.fasterxml.jackson.annotation.JsonView;
 @RestController
 @CrossOrigin("http://localhost:4200")
 public class FileController {
@@ -90,23 +84,3 @@ public class FileController {
 	}
 }
   
-	/*@GetMapping("/api/file/all")
-	public List<FileModel> getListFiles() {
-		return fileRepository.findAll();
-	}
-	
-
-	@GetMapping("/api/file/{id}")
-	public ResponseEntity<byte[]> getFile(@PathVariable Long id) {
-		Optional<FileModel> fileOptional = fileRepository.findById(id);
-		
-		if(fileOptional.isPresent()) {
-			FileModel file = fileOptional.get();
-			return ResponseEntity.ok()
-					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getName() + "\"")
-					.body(file.getPic());	
-		}
-		
-		return ResponseEntity.status(404).body(null);
-	}
-}*/

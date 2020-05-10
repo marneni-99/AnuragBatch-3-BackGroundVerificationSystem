@@ -3,6 +3,7 @@ package com.capgemini.backgroundverification.test;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.capgemini.backgroundverification.dao.VerificationRepository;
@@ -25,6 +26,7 @@ import org.mockito.InjectMocks;
 		VerificationService service;
 		
 		@Mock
+		@Autowired
 		VerificationRepository dao;
 		
 		@Before(value = "")
@@ -44,7 +46,7 @@ import org.mockito.InjectMocks;
 			
 				Verification v = new Verification(1,"Green");
 				when(dao.save(v)).thenReturn(v);
-				Verification v1=service.setStatus(v);
+				Verification v1=service.setStatus(v, 1);
 				assertEquals(1,v1.getVerId());
 				assertEquals("Green",v1.getStatus());
 				
